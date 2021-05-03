@@ -1,13 +1,41 @@
+// // install event handler
+// self.addEventListener("install", (event) => {
+//   event.waitUntil(
+//     caches.open("static").then((cache) => {
+//       return cache.addAll([
+//         "./",
+//         "./index.html",
+//         "./index.js",
+//         "./manifest.webmanifest",
+//         "./styles.css",
+//         "./icons/icon-192x192.png",
+//         "./icons/icon-512x512.png",
+//       ]);
+//     })
+//   );
+//   console.log("Install");
+//   self.skipWaiting();
+// });
+
+// // retrieve assets from cache
+// self.addEventListener("fetch", (event) => {
+//   event.respondWith(
+//     caches.match(event.request).then((response) => {
+//       return response || fetch(event.request);
+//     })
+//   );
+// });
+
 const CACHE_NAME = "budget-cache";
 const DATA_CACHE_NAME = "data-budget-cache";
 const FILES_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/index.js",
-  "/manifest",
-  "/styles.css",
-  "/icons/icons/icon-192x192.png",
-  "/icons/icons/icon-512x512.png",
+  ".",
+  "./index.html",
+  "./index.js",
+  "./manifest.webmanifest",
+  "./styles.css",
+  "./icons/icon-192x192.png",
+  "./icons/icon-512x512.png",
 ];
 
 self.addEventListener("install", function (evt) {
@@ -15,16 +43,13 @@ self.addEventListener("install", function (evt) {
     evt.waitUntil(
       caches.open(DATA_CACHE_NAME).then((cache) => cache.add("/api/transaction"))
     );
-      
 
     evt.waitUntil(
       caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
     );
-  
 
     self.skipWaiting();
   });
-  
 
   self.addEventListener("activate", function(evt) {
     evt.waitUntil(
@@ -39,10 +64,9 @@ self.addEventListener("install", function (evt) {
         );
       })
     );
-  
+
     self.clients.claim();
   });
-  
 
   self.addEventListener("fetch", function(evt) {
     if (evt.request.url.includes("/api/")) {
@@ -50,23 +74,23 @@ self.addEventListener("install", function (evt) {
         caches.open(DATA_CACHE_NAME).then(cache => {
           return fetch(evt.request)
             .then(response => {
-             
+
               if (response.status === 200) {
                 cache.put(evt.request.url, response.clone());
               }
-  
+
               return response;
             })
             .catch(err => {
-           
+
               return cache.match(evt.request);
             });
         }).catch(err => console.log(err))
       );
-  
+
       return;
     }
-  
+
     evt.respondWith(
       caches.open(CACHE_NAME).then(cache => {
         return cache.match(evt.request).then(response => {
@@ -75,4 +99,3 @@ self.addEventListener("install", function (evt) {
       })
     );
   });
-  
