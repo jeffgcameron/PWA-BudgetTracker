@@ -4,6 +4,9 @@
 ## Description
 This application allows users to track their spending. The user will be able to post their transactions while offline, which will be added to the tracker once the application is brought back online.
 
+## Application Screenshot
+![PWA Budget Tracker](./public/images/screenshot.png)
+
 ## Table of Contents
 
 * [Usage](#usage)
@@ -34,11 +37,11 @@ This application is covered under the MIT license.
 ## Tests
 I tested this application through Chrome's inspector tool. Using the offline option in the service worker tab, Im was able to ensure that offline trasactions were saved.
 
-### Github
+## Github
 Visit my Github Profile at https://github.com/jeffgcameron
 
-### Questions 
+## Questions 
 Email me at jeffgcameron@gmail.com
 
-### Application Link
+## Application Link
 https://github.com/jeffgcameron/PWA-BudgetTracker
