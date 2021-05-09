@@ -1,14 +1,14 @@
 const CACHE_NAME = "budget-cache";
 const DATA_CACHE_NAME = "data-budget-cache";
 const FILES_TO_CACHE = [
-  "./",
-  "./index.html",
-  "./index.js",
-  "./manifest.webmanifest",
-  "./styles.css",
-  "./icons/icon-192x192.png",
-  "./icons/icon-512x512.png",
-  "./db.js"
+  "/",
+  "/index.html",
+  "/index.js",
+  "/manifest.webmanifest",
+  "/styles.css",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png",
+  "/db.js"
 ];
 
 self.addEventListener("install", function (evt) {
