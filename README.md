@@ -44,4 +44,4 @@ Visit my Github Profile at https://github.com/jeffgcameron
 Email me at jeffgcameron@gmail.com
 
 ## Application Link
-https://arcane-waters-55780.herokuapp.com/arcane-waters-55780
+https://arcane-waters-55780.herokuapp.com
