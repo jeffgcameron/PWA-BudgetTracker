@@ -1,41 +1,14 @@
-// // install event handler
-// self.addEventListener("install", (event) => {
-//   event.waitUntil(
-//     caches.open("static").then((cache) => {
-//       return cache.addAll([
-//         "./",
-//         "./index.html",
-//         "./index.js",
-//         "./manifest.webmanifest",
-//         "./styles.css",
-//         "./icons/icon-192x192.png",
-//         "./icons/icon-512x512.png",
-//       ]);
-//     })
-//   );
-//   console.log("Install");
-//   self.skipWaiting();
-// });
-
-// // retrieve assets from cache
-// self.addEventListener("fetch", (event) => {
-//   event.respondWith(
-//     caches.match(event.request).then((response) => {
-//       return response || fetch(event.request);
-//     })
-//   );
-// });
-
 const CACHE_NAME = "budget-cache";
 const DATA_CACHE_NAME = "data-budget-cache";
 const FILES_TO_CACHE = [
-  ".",
-  "./index.html",
-  "./index.js",
-  "./manifest.webmanifest",
-  "./styles.css",
-  "./icons/icon-192x192.png",
-  "./icons/icon-512x512.png",
+  "/",
+  "/index.html",
+  "/index.js",
+  "/manifest.webmanifest",
+  "/styles.css",
+  "/icons/icon-192x192.png",
+  "/icons/icon-512x512.png",
+  "/db.js"
 ];
 
 self.addEventListener("install", function (evt) {
